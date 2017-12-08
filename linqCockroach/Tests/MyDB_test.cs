@@ -12,6 +12,8 @@ using System.Linq;
 using linqCockroach.Models;
 using Npgsql;
 using NUnit.Framework;
+using LinqToDB;
+using LinqToDB.Mapping;
 
 namespace linqCockroach.Tests
 {
@@ -35,6 +37,22 @@ namespace linqCockroach.Tests
 				
 				var find = db.accounts.FirstOrDefault();
 				Console.WriteLine(find.ToString());
+			}
+		}
+		
+		[Test]
+		public void TestCreate(){
+			using (var db = new MyDB("cnstrPostgreSQL")) {
+				
+				var sp = db.DataProvider.GetSchemaProvider();
+				
+				db.CreateTable<accounts2>();
+//				var dbSchema = sp.GetSchema(db);
+//				if(!dbSchema.Tables.Any(t => t.TableName == "accounts2"))
+//				{
+//					//no required table-create it
+//					db.CreateTable<accounts>();
+//				}
 			}
 		}
 	}

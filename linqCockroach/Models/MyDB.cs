@@ -42,4 +42,15 @@ namespace linqCockroach.Models
 		}
 
 	}
+	[Table(Schema="bank", Name="accounts2")]
+	public partial class accounts2 {
+		[PrimaryKey, NotNull] public int id {get;set;}
+		[Column, Nullable] public decimal balance {get;set;}
+		
+		public override string ToString()
+		{
+			return string.Format("[accounts Id={0}, Balance={1}]", id, balance);
+		}
+
+	}
 }
