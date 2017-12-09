@@ -20,7 +20,7 @@ namespace linqCockroach.Models
 	{
 		
 		public ITable<accounts> accounts { get { return this.GetTable<accounts>(); } }
-
+ 
 		public MyDB()
 		{
 		}
@@ -31,9 +31,10 @@ namespace linqCockroach.Models
 		}
 	}
 	
-	[Table(Schema="bank", Name="accounts")]
+	//[Table(Schema="bank", Name="accounts3")]
+	[Table(Name="accounts4")]
 	public partial class accounts {
-		[PrimaryKey, NotNull] public int id {get;set;}
+		[PrimaryKey, NotNull, Identity] public int id {get;set;}
 		[Column, Nullable] public decimal balance {get;set;}
 		
 		public override string ToString()
